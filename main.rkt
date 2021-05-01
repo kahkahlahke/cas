@@ -1,5 +1,6 @@
 #lang racket
 (require racket/trace)
+
 (define super-ersetzen
   (lambda (el1 ls el2)
     (if (null? ls)
@@ -17,7 +18,9 @@
 
 (define ln log)
 (define e (exp 1))
-;Differentiationsregeln
+
+;-- Differentiationsregeln -----------------------------------------------------
+
 (define ableitung
   (lambda (ausdr var)
     (cond
@@ -94,6 +97,8 @@
             'Unbekannt!]))]
       [else
        'Unbekannt!])))
+       
+;-- Vereinfachung --------------------------------------------------------------
 
 (define vereinfache
   (lambda (ausdr)
@@ -167,17 +172,19 @@
          (help-binop (car ausdr) (cadr ausdr) (caddr ausdr))]
         [else
          ausdr]))))
-; I have no fucking clue what in the motherfucking hell this is
-; I hope I die of croniavirus
-(define re-n-ab-ver-voll
-  (lambda (g var n)
-    (vereinfache-vollstaendig (n-ab (reduziere g) var n))))
-
+	 
 (define vereinfache-vollstaendig
   (lambda (term)
     (let ([term-neu (vereinfache term)])
       (if (not (equal? term term-neu))
           (vereinfache-vollstaendig term-neu)
-          term-neu))))
+          term-neu))))	 
+	  
+;-- Comments -------------------------------------------------------------------
+
+; I have no fucking clue what in the motherfucking hell this is
+; I hope I die of croniavirus
+
+;-- Testing --------------------------------------------------------------------
 
 (vereinfache-vollstaendig '(sqrt (* 2 )) )

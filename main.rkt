@@ -45,9 +45,9 @@
                   (list '* -1 (list 'sin term1))
                   (ableitung term1 var))]
 	   [(tan)
-            (list '/ 1
-                  (list 'sqr
-                  (list 'cos term1)))]
+            (list '*
+                  (list '/ 1 (list 'sqr (list 'cos term1)))
+                  (ableitung term1 var))]
            [(asin)
             (list '*
                   (list '/ 1 (list 'sqrt (list '- 1 (list 'sqr term1))))
@@ -89,8 +89,13 @@
             (list '* (ableitung (list '* term2 (list 'ln term1)) var)
                   (list 'expt e (list '* term2 (list 'ln term1))))]
            [(log)
-
-	    ] 
+            (list '-
+                  (list '/
+                        (ableitung term1 var)
+                        (list '* term1 (list 'log term2)))
+                  (list '/
+                        (list '* (ableitung term2 var) (list 'log term1))
+                        (list '* term2 (list 'expt (list 'log term2) 2))))]
            [else
             'Unbekannt!]))]
       [else
@@ -178,6 +183,10 @@
           (vereinfache-vollstaendig term-neu)
           term-neu))))	 
 	  
+;-- Comments -------------------------------------------------------------------
+
+; I have no fucking clue what in the motherfucking hell this is
+; I hope I die of croniavirus
 
 ;-- Testing --------------------------------------------------------------------
 

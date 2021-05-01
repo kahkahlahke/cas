@@ -14,7 +14,7 @@
 
 (super-ersetzen 'x '(lambda (x) (+ (* 2 x) y)) 'z)
 
-(define ^ expt)
+
 (define ln log)
 (define e (exp 1))
 ;Differentiationsregeln
@@ -120,7 +120,7 @@
                      [(equal? term1 term2) 1]
                      [(and (number? term1) (number? term2)) (/ term1 term2)]
                      [else (list '/ (vereinfache term1) (vereinfache term2))])]
-              [(^) (cond
+              [(expt ^) (cond
 		     [(and (eqv? term1 0) (eqv? term2 0)) 'ungueltig]
                      [(eqv? term1 0) 0]
                      [(eqv? term2 0) 1]

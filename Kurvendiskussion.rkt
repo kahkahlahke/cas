@@ -79,6 +79,3 @@
 (define f  '(+ (expt x 3) (* 6 (expt x 2)) (* x 11) 6))
 (nstliste funk -10 10 1e-5)
 (nstliste (fkt f) -10 10 1e-5)
-(define fkt
-  (lambda (term var)
-    (eval (list 'lambda (list var) term) ns)))

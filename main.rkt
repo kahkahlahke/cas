@@ -89,10 +89,8 @@
             (list '* (ableitung (list '* term2 (list 'ln term1)) var)
                   (list 'expt e (list '* term2 (list 'ln term1))))]
            [(log)
-            (list '*
-                  (list 'expt term1 -1)
-                  (list 'log term2))]
-	   
+
+	    ] 
            [else
             'Unbekannt!]))]
       [else

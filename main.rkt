@@ -183,10 +183,6 @@
           (vereinfache-vollstaendig term-neu)
           term-neu))))	 
 	  
-;-- Comments -------------------------------------------------------------------
-
-; I have no fucking clue what in the motherfucking hell this is
-; I hope I die of croniavirus
 
 ;-- Testing --------------------------------------------------------------------
 

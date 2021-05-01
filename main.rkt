@@ -28,6 +28,8 @@
          (case op
            [(+) 
             (list '+ (ableitung term1 var))]
+	   [(-) 
+            (list '- (ableitung term1 var))]
            [(sqr)
             (list '* 2
                   (list '* term1 (ableitung term1 var)))]
@@ -39,10 +41,30 @@
             (list '*
                   (list '* -1 (list 'sin term1))
                   (ableitung term1 var))]
+	   [(tan)
+            (list '/ 1
+                  (list 'sqr
+                  (list 'cos term1)))]
+           [(asin)
+            (list '*
+                  (list '/ 1 (list 'sqrt (list '- 1 (list 'sqr term1))))
+                  (ableitung term1 var))]
+           [(acos)
+            (list '*
+                  (list '- (list '/ 1 (list 'sqrt (list '- 1 (list 'sqr term1)))))
+                  (ableitung term1 var))]
+           [(atan)
+            (list '*
+                  (list '/ 1 (list '+ (list 'sqr term1) 1))
+                  (ableitung term1 var))]
            [(sqrt)
             (list '* 
                   (list '/ 1  (list '* 2 (list 'sqrt term1)))
                   (ableitung term1 var))]
+           [(exp) 
+            (list 'exp term1)]
+           [(log) 
+            (list '/ 1 term1)]
            [else
             'Unbekannt!]))]
       [(= (length ausdr) 3)

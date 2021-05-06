@@ -15,7 +15,7 @@
 
 (super-ersetzen 'x '(lambda (x) (+ (* 2 x) y)) 'z)
 
-
+(define ^ expt)
 (define ln log)
 (define e (exp 1))
 

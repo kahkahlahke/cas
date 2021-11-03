@@ -63,7 +63,7 @@
         [(-) (list '- (derivative term1 var) (derivative term2 var))]
         [(*) (list '+ (list '* (derivative term1 var) term2 ) (list '* (derivative term2 var) term1 ))]
         [(/) (list '/ (list '- (list '* (derivative term1 var) term2) (list '* (derivative term2 var) term1)) (list '* term2 term2))]
-        [(^) (list '* (list '+ (list '/ (list '* (derivative term1 var) term2) term1) (list '* (list 'ln term1) (derivative term2 var))) (list '^ term1 term2))]
+        [(^) (list '* (list '+ (list '/ (list '* (derivative term1 var) term2) term1) (list '* (list 'ln (abs term1)) (derivative term2 var))) (list '^ term1 term2))]
         [(log) (list '- (list '/ (derivative term1 var) (list '* (list 'ln term2) term1)) (list '/ (list '* (derivative term2 var) (list 'ln term1)) (list '* term2 (list '^ (list 'ln term2) 2))))]
         [else "Unknown!"]
         )
